@@ -314,7 +314,7 @@ const (
 	DiagonalsNodeStyle = cgraph.DiagonalsNodeStyle
 	FilledNodeStyle    = cgraph.FilledNodeStyle
 	StripedNodeStyle   = cgraph.StripedNodeStyle
-	WedgedNodeStyle    = cgraph.WedgedNodeStyle
+	WedgesNodeStyle    = cgraph.WedgesNodeStyle
 )
 
 const (

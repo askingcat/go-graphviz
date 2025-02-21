@@ -2560,7 +2560,7 @@ const (
 	DiagonalsNodeStyle NodeStyle = "diagonals"
 	FilledNodeStyle    NodeStyle = "filled"
 	StripedNodeStyle   NodeStyle = "striped"
-	WedgedNodeStyle    NodeStyle = "wedged"
+	WedgesNodeStyle    NodeStyle = "wedged"
 )
 
 type EdgeStyle string

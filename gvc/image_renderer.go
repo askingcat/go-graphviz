@@ -333,18 +333,11 @@ func (r *ImageRenderer) Polyline(ctx context.Context, job *Job, a []*PointFloat)
 	return nil
 }
 
-func (r *ImageRenderer) BezierCurve(ctx context.Context, job *Job, a []*PointFloat, filled bool) error {
+func (r *ImageRenderer) BezierCurve(ctx context.Context, job *Job, a []*PointFloat) error {
 	r.ctx.Push()
 	defer r.ctx.Pop()
 	r.setPenStyle(job)
-	var c *Color
-	if filled {
-		c = job.Object().FillColor()
-		r.ctx.FillPreserve()
-	} else {
-		c = job.Object().PenColor()
-	}
-	rgba := c.RGBAUint()
+	rgba := job.Object().PenColor().RGBAUint()
 	r.ctx.SetRGB(float64(rgba[0])/255.0, float64(rgba[1])/255.0, float64(rgba[2])/255.0)
 	r.ctx.MoveTo(r.toX(job, a[0].X()), r.toY(job, -a[0].Y()))
 	for i := 1; i < len(a); i += 3 {
@@ -357,11 +350,7 @@ func (r *ImageRenderer) BezierCurve(ctx context.Context, job *Job, a []*PointFlo
 			r.toY(job, -a[i+2].Y()),
 		)
 	}
-	if filled {
-		r.ctx.Fill()
-	} else {
-		r.ctx.Stroke()
-	}
+	r.ctx.Stroke()
 	return nil
 }
 
